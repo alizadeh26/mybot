@@ -47,7 +47,6 @@ class SingBoxRunner:
 
         config = {
             "log": {"level": "warn"},
-            "dns": {"servers": [{"tag": "google", "address": "8.8.8.8"}]},
             "inbounds": [
                 {
                     "type": "mixed",
