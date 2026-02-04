@@ -1,1 +1,3 @@
-
+vless://8910cbb3-33b1-4266-a243-ac780ac63394@45.15.170.237:80?encryption=none&path=%2Fvless%2F&security=none&type=ws#Server 92 🇦🇱
+vless://c33275fd-a4fa-470d-90e4-55da39d849a8@104.26.6.35:80?type=ws&path=/&host=de.tawana.cf.panbehpanel.ir&encryption=none#Server 49 🇺🇸
+trojan://c1d83c0c7d57cead4379ba14a82df69b@160.16.124.55:491?security=tls&sni=www.nintendogames.net&type=#Server 114 🇯🇵
