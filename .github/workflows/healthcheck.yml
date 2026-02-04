@@ -57,6 +57,11 @@ jobs:
           MAX_CONCURRENCY: "20"
           GITHUB_OUTPUT_TXT_PATH: "healthy.txt"
           GITHUB_OUTPUT_YAML_PATH: "healthy_clash.yaml"
+          CHECK_HOST_COUNTRY: "ir"
+          CHECK_HOST_MAX_ENDPOINTS: "50"
+          CHECK_HOST_CONCURRENCY: "5"
+          CHECK_HOST_POLL_WAIT_SECONDS: "15"
+          GITHUB_OUTPUT_IR_PATH: "iran_reachable.txt"
         run: |
           python run_once.py
 
@@ -65,7 +70,7 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add healthy.txt healthy_clash.yaml
+          git add healthy.txt healthy_clash.yaml iran_reachable.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
