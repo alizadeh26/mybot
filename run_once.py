@@ -4,8 +4,10 @@ import asyncio
 import os
 from datetime import datetime
 
+from check_host import Endpoint, reachable_from_country_tcp
 from checker import check_nodes, collect_nodes, render_outputs
 from config import load_settings
+from subs import node_from_share_link
 from telegram_sender import send_document, send_message
 
 
@@ -47,6 +49,57 @@ async def main() -> None:
 
     txt_bytes, yml_bytes = render_outputs(res)
 
+    check_host_country = os.environ.get("CHECK_HOST_COUNTRY", "ir").strip().lower()
+    check_host_max_endpoints = int(os.environ.get("CHECK_HOST_MAX_ENDPOINTS", "50"))
+    check_host_concurrency = int(os.environ.get("CHECK_HOST_CONCURRENCY", "5"))
+    check_host_poll_wait_seconds = int(os.environ.get("CHECK_HOST_POLL_WAIT_SECONDS", "15"))
+    iran_path = os.environ.get("GITHUB_OUTPUT_IR_PATH", "iran_reachable.txt")
+
+    endpoints: list[Endpoint] = []
+    seen_hostport: set[str] = set()
+
+    for link in res.healthy_links:
+        try:
+            n = node_from_share_link(link)
+            host = str(n.outbound.get("server") or "").strip()
+            port = int(n.outbound.get("server_port"))
+            if host and port:
+                ep = Endpoint(host=host, port=port, line=link)
+                if ep.hostport not in seen_hostport:
+                    seen_hostport.add(ep.hostport)
+                    endpoints.append(ep)
+        except Exception:
+            continue
+
+    for p in res.healthy_clash_proxies:
+        try:
+            host = str(p.get("server") or "").strip()
+            port = int(p.get("port"))
+            name = str(p.get("name") or "").strip()
+            if host and port:
+                line = f"{host}:{port}" + (f"\t{name}" if name else "")
+                ep = Endpoint(host=host, port=port, line=line)
+                if ep.hostport not in seen_hostport:
+                    seen_hostport.add(ep.hostport)
+                    endpoints.append(ep)
+        except Exception:
+            continue
+
+    iran_ok: list[Endpoint] = []
+    if endpoints and check_host_country:
+        try:
+            iran_ok = await reachable_from_country_tcp(
+                endpoints,
+                country_code=check_host_country,
+                max_endpoints=check_host_max_endpoints,
+                concurrency=check_host_concurrency,
+                poll_wait_seconds=check_host_poll_wait_seconds,
+            )
+        except Exception:
+            iran_ok = []
+
+    iran_bytes = ("\n".join(ep.line for ep in iran_ok).strip() + "\n").encode("utf-8")
+
     txt_path = settings.github_output_txt_path
     yml_path = settings.github_output_yaml_path
 
@@ -58,6 +111,10 @@ async def main() -> None:
 
     with open(yml_path, "wb") as f:
         f.write(yml_bytes)
+
+    os.makedirs(os.path.dirname(iran_path) or ".", exist_ok=True)
+    with open(iran_path, "wb") as f:
+        f.write(iran_bytes)
 
     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     await send_document(
@@ -75,10 +132,18 @@ async def main() -> None:
         caption=f"Healthy clash proxies: {len(res.healthy_clash_proxies)}",
     )
 
+    await send_document(
+        settings.telegram_bot_token,
+        settings.admin_chat_id,
+        filename=f"iran_reachable_{ts}.txt",
+        content=iran_bytes,
+        caption=f"Reachable from {check_host_country.upper()} (TCP): {len(iran_ok)}",
+    )
+
     await send_message(
         settings.telegram_bot_token,
         settings.admin_chat_id,
-        f"تمام شد. links={len(res.healthy_links)} proxies={len(res.healthy_clash_proxies)}",
+        f"تمام شد. links={len(res.healthy_links)} proxies={len(res.healthy_clash_proxies)} ir={len(iran_ok)}",
     )
 
 
