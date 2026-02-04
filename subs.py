@@ -167,7 +167,6 @@ def node_from_share_link(link: str) -> Node:
         fp = params.get("fp", [""])[0]
         pbk = params.get("pbk", [""])[0]
         sid = params.get("sid", [""])[0]
-        spx = params.get("spx", [""])[0]
         flow = params.get("flow", [""])[0]
         transport = (params.get("type", ["tcp"])[0] or "tcp").lower()
 
@@ -191,8 +190,6 @@ def node_from_share_link(link: str) -> Node:
                     tls["reality"]["public_key"] = pbk
                 if sid:
                     tls["reality"]["short_id"] = sid
-                if spx:
-                    tls["reality"]["spider_x"] = spx
                 if fp:
                     tls["utls"] = {"enabled": True, "fingerprint": fp}
             outbound["tls"] = tls
