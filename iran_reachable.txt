@@ -1,1 +1,2 @@
-vless://686c62d9-17a7-43c9-a40a-f6747df60a9f@chatgpt.com:2096?path=%2F&security=tls&alpn=http%2F1.1&encryption=none&host=ca.adobe-connect.top&fp=chrome&type=ws&sni=ca.adobe-connect.top#Server 42 🇬🇧
+vless://e08f1ad7-0c60-446d-baec-08b3b69bb3d0@nl-90w-c.southnetworks.cloud:80?type=ws&security=none&encryption=none&path=/getWorkerUpdates#Server 63 🇷🇺
+trojan://c1d83c0c7d57cead4379ba14a82df69b@160.16.106.99:3901?security=tls&sni=www.nintendogames.net#Server 129 🇯🇵

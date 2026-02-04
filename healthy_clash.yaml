@@ -4,6 +4,16 @@ allow-lan: true
 mode: Rule
 log-level: silent
 proxies:
+- name: GB_c2a86_0013
+  server: 82.198.246.97
+  port: 180
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  udp: true
 - name: MK_c2a86_0024
   server: 46.183.185.37
   port: 989
@@ -18,13 +28,6 @@ proxies:
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: VN_c2a86_0043
-  server: 103.186.155.209
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
 - name: VN_c2a86_0044
   server: 103.186.154.180
   port: 38388
@@ -32,15 +35,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0045
-  server: 103.186.155.44
+- name: VN_c2a86_0043
+  server: 103.186.155.209
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0047
-  server: 103.186.155.8
+- name: VN_c2a86_0045
+  server: 103.186.155.44
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -60,8 +63,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0049
-  server: 103.186.155.119
+- name: VN_c2a86_0047
+  server: 103.186.155.8
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_c2a86_0054
+  server: 103.186.155.27
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -74,15 +84,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0051
-  server: 103.186.155.144
+- name: VN_c2a86_0049
+  server: 103.186.155.119
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0052
-  server: 103.186.154.237
+- name: VN_c2a86_0051
+  server: 103.186.155.144
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -95,8 +105,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0054
-  server: 103.186.155.27
+- name: VN_c2a86_0052
+  server: 103.186.154.237
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -116,15 +126,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0058
-  server: 103.186.154.254
+- name: VN_c2a86_0057
+  server: 103.186.154.181
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0057
-  server: 103.186.154.181
+- name: VN_c2a86_0058
+  server: 103.186.154.254
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -144,13 +154,6 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0061
-  server: 103.186.155.28
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
 - name: VN_c2a86_0062
   server: 103.186.155.60
   port: 38388
@@ -158,8 +161,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_c2a86_0064
-  server: 103.186.155.17
+- name: VN_c2a86_0061
+  server: 103.186.155.28
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -172,6 +175,13 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
+- name: VN_c2a86_0064
+  server: 103.186.155.17
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
 - name: VN_c2a86_0065
   server: 103.186.154.79
   port: 38388
@@ -179,12 +189,26 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: 🇷🇺 俄罗斯 | RUS
-  server: ru1.clear-vpn.org
-  port: 504
+- name: 🇲🇩 摩尔多瓦 | MDA
+  server: 185.153.197.5
+  port: 989
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: nKohne07VrxB-nq43cxzs7Vu9Nnp4JXY
+  cipher: aes-256-cfb
+  password: f8f7aCzcPKbsF8p3
+  udp: true
+- name: 🇺🇸 美国 | USA 14
+  server: bbbnmkl.2030.pp.ua
+  port: 443
+  type: vless
+  uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
+  tls: true
+  servername: bbbnmkl.2030.pp.ua
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /s2VHv9VUVzg35A6ueyyZnWd
+    headers:
+      Host: bbbnmkl.2030.pp.ua
   udp: true
 - name: 🇺🇸 美国 | USA 36
   server: vvbght.932.pp.ua
@@ -202,20 +226,6 @@ proxies:
     headers:
       Host: vvbght.932.pp.ua
   udp: true
-- name: 🇺🇸 美国 | USA 14
-  server: bbbnmkl.2030.pp.ua
-  port: 443
-  type: vless
-  uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
-  tls: true
-  servername: bbbnmkl.2030.pp.ua
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /s2VHv9VUVzg35A6ueyyZnWd
-    headers:
-      Host: bbbnmkl.2030.pp.ua
-  udp: true
 - name: 🇻🇳 越南 | VNM
   server: 103.186.154.16
   port: 38388
@@ -223,48 +233,41 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: 🇲🇩 摩尔多瓦 | MDA
-  server: 185.153.197.5
-  port: 989
-  type: ss
-  cipher: aes-256-cfb
-  password: f8f7aCzcPKbsF8p3
-  udp: true
 proxy-groups:
 - name: AUTO
   type: url-test
   url: https://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
+  - GB_c2a86_0013
   - MK_c2a86_0024
   - US_c2a86_0037
-  - VN_c2a86_0043
   - VN_c2a86_0044
+  - VN_c2a86_0043
   - VN_c2a86_0045
-  - VN_c2a86_0047
   - VN_c2a86_0046
   - VN_c2a86_0048
-  - VN_c2a86_0049
-  - VN_c2a86_0050
-  - VN_c2a86_0051
-  - VN_c2a86_0052
-  - VN_c2a86_0053
+  - VN_c2a86_0047
   - VN_c2a86_0054
+  - VN_c2a86_0050
+  - VN_c2a86_0049
+  - VN_c2a86_0051
+  - VN_c2a86_0053
+  - VN_c2a86_0052
   - VN_c2a86_0055
   - VN_c2a86_0056
-  - VN_c2a86_0058
   - VN_c2a86_0057
+  - VN_c2a86_0058
   - VN_c2a86_0059
   - VN_c2a86_0060
-  - VN_c2a86_0061
   - VN_c2a86_0062
-  - VN_c2a86_0064
+  - VN_c2a86_0061
   - VN_c2a86_0063
+  - VN_c2a86_0064
   - VN_c2a86_0065
-  - 🇷🇺 俄罗斯 | RUS
-  - 🇺🇸 美国 | USA 36
-  - 🇺🇸 美国 | USA 14
-  - 🇻🇳 越南 | VNM
   - 🇲🇩 摩尔多瓦 | MDA
+  - 🇺🇸 美国 | USA 14
+  - 🇺🇸 美国 | USA 36
+  - 🇻🇳 越南 | VNM
 rules:
 - MATCH,AUTO
