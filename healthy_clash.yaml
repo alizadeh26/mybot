@@ -14,6 +14,13 @@ proxies:
   tls: false
   skip-cert-verify: false
   udp: true
+- name: US_b37a9_0037
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
 - name: DE_b37a9_0009
   server: dlc-nl1.persianpinggame.ir
   port: 8881
@@ -28,34 +35,6 @@ proxies:
     headers:
       Host: divarcdn.com
   udp: true
-- name: MK_b37a9_0024
-  server: 46.183.185.37
-  port: 989
-  type: ss
-  cipher: aes-256-cfb
-  password: f8f7aCzcPKbsF8p3
-  udp: true
-- name: US_b37a9_0037
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: VN_b37a9_0043
-  server: 103.186.155.209
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_b37a9_0046
-  server: 103.186.154.57
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
 - name: VN_b37a9_0044
   server: 103.186.154.180
   port: 38388
@@ -63,22 +42,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0045
-  server: 103.186.155.44
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_b37a9_0047
-  server: 103.186.155.8
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_b37a9_0049
-  server: 103.186.155.119
+- name: VN_b37a9_0043
+  server: 103.186.155.209
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -91,15 +56,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0051
-  server: 103.186.155.144
+- name: VN_b37a9_0046
+  server: 103.186.154.57
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0050
-  server: 103.186.155.76
+- name: VN_b37a9_0047
+  server: 103.186.155.8
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -112,8 +77,43 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
+- name: VN_b37a9_0045
+  server: 103.186.155.44
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_b37a9_0051
+  server: 103.186.155.144
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_b37a9_0049
+  server: 103.186.155.119
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_b37a9_0050
+  server: 103.186.155.76
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
 - name: VN_b37a9_0053
   server: 103.186.154.247
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_b37a9_0055
+  server: 103.186.155.203
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -128,13 +128,6 @@ proxies:
   udp: true
 - name: VN_b37a9_0054
   server: 103.186.155.27
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_b37a9_0055
-  server: 103.186.155.203
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -161,13 +154,6 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0060
-  server: 103.186.155.49
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
 - name: VN_b37a9_0061
   server: 103.186.155.28
   port: 38388
@@ -175,15 +161,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0062
-  server: 103.186.155.60
+- name: VN_b37a9_0060
+  server: 103.186.155.49
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_b37a9_0064
-  server: 103.186.155.17
+- name: VN_b37a9_0062
+  server: 103.186.155.60
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -202,6 +188,20 @@ proxies:
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_b37a9_0064
+  server: 103.186.155.17
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: 🇰🇷 韩国 | KOR 5
+  server: 218.234.149.9
+  port: 17975
+  type: ss
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
   udp: true
 - name: 🇺🇸 美国 | USA 19
   server: bbbnmju.932.pp.ua
@@ -235,13 +235,6 @@ proxies:
     headers:
       Host: ffvvbnhju.2030.pp.ua
   udp: true
-- name: 🇰🇷 韩国 | KOR 5
-  server: 218.234.149.9
-  port: 17975
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-  udp: true
 - name: 🇻🇳 越南 | VNM
   server: 103.186.154.79
   port: 38388
@@ -256,35 +249,34 @@ proxy-groups:
   interval: 300
   proxies:
   - GB_b37a9_0013
-  - DE_b37a9_0009
-  - MK_b37a9_0024
   - US_b37a9_0037
-  - VN_b37a9_0043
-  - VN_b37a9_0046
+  - DE_b37a9_0009
   - VN_b37a9_0044
-  - VN_b37a9_0045
-  - VN_b37a9_0047
-  - VN_b37a9_0049
+  - VN_b37a9_0043
   - VN_b37a9_0048
-  - VN_b37a9_0051
-  - VN_b37a9_0050
+  - VN_b37a9_0046
+  - VN_b37a9_0047
   - VN_b37a9_0052
+  - VN_b37a9_0045
+  - VN_b37a9_0051
+  - VN_b37a9_0049
+  - VN_b37a9_0050
   - VN_b37a9_0053
+  - VN_b37a9_0055
   - VN_b37a9_0056
   - VN_b37a9_0054
-  - VN_b37a9_0055
   - VN_b37a9_0057
   - VN_b37a9_0058
   - VN_b37a9_0059
-  - VN_b37a9_0060
   - VN_b37a9_0061
+  - VN_b37a9_0060
   - VN_b37a9_0062
-  - VN_b37a9_0064
   - VN_b37a9_0063
   - VN_b37a9_0065
+  - VN_b37a9_0064
+  - 🇰🇷 韩国 | KOR 5
   - 🇺🇸 美国 | USA 19
   - 🇺🇸 美国 | USA 32
-  - 🇰🇷 韩国 | KOR 5
   - 🇻🇳 越南 | VNM
 rules:
 - MATCH,AUTO
