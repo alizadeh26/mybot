@@ -21,6 +21,13 @@ class Node:
 _PROTOCOL_PREFIXES = ("vmess://", "vless://", "trojan://", "ss://")
 
 
+def _normalize_ss_method(method: str) -> str:
+    m = (method or "").strip().lower()
+    if m == "chacha20-poly1305":
+        return "chacha20-ietf-poly1305"
+    return m
+
+
 def _is_probably_yaml(text: str) -> bool:
     t = text.lstrip()
     return t.startswith("proxies:") or ("\nproxies:" in t) or ("proxy-groups:" in t)
@@ -115,7 +122,7 @@ def _parse_ss(link: str) -> tuple[str, int, str, str]:
     if ":" not in hostport:
         raise ValueError("Invalid ss link host:port")
     host, port_s = hostport.rsplit(":", 1)
-    return host, int(port_s), method, password
+    return host, int(port_s), _normalize_ss_method(method), password
 
 
 def node_from_share_link(link: str) -> Node:
@@ -338,7 +345,7 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
             "tag": tag,
             "server": server,
             "server_port": port,
-            "method": proxy.get("cipher") or proxy.get("method"),
+            "method": _normalize_ss_method(str(proxy.get("cipher") or proxy.get("method") or "")),
             "password": proxy.get("password"),
         }
         return Node(tag=tag, outbound=outbound, export_link=None, export_clash_proxy=proxy)
