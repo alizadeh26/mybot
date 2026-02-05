@@ -7,7 +7,8 @@ from datetime import datetime
 from check_host import Endpoint, reachable_from_country_tcp
 from checker import check_nodes, collect_nodes, render_outputs
 from config import load_settings
-from subs import node_from_share_link
+from speed_test import find_fast_nodes, render_fast_list
+from subs import node_from_clash_proxy, node_from_share_link
 from telegram_sender import send_document, send_message
 
 
@@ -100,6 +101,68 @@ async def main() -> None:
 
     iran_bytes = ("\n".join(ep.line for ep in iran_ok).strip() + "\n").encode("utf-8")
 
+    speed_enabled = os.environ.get("SPEED_TEST_ENABLED", "1").strip().lower() not in ("0", "false", "no")
+    speed_threshold_kib_s = int(os.environ.get("SPEED_TEST_THRESHOLD_KIB_S", "500"))
+    speed_max_nodes = int(os.environ.get("SPEED_TEST_MAX_NODES", "10"))
+    speed_concurrency = int(os.environ.get("SPEED_TEST_CONCURRENCY", "1"))
+    speed_download_bytes = int(os.environ.get("SPEED_TEST_DOWNLOAD_BYTES", "2000000"))
+    speed_upload_bytes = int(os.environ.get("SPEED_TEST_UPLOAD_BYTES", "1000000"))
+    speed_timeout_seconds = int(os.environ.get("SPEED_TEST_TIMEOUT_SECONDS", "25"))
+    fast_path = os.environ.get("GITHUB_OUTPUT_FAST_PATH", "fast_500kbps.txt")
+
+    fast_bytes = b"\n"
+    fast_count = 0
+    if speed_enabled:
+        speed_outbounds: list[dict] = []
+        labels_by_tag: dict[str, str] = {}
+        seen_tags: set[str] = set()
+
+        for link in res.healthy_links:
+            try:
+                n = node_from_share_link(link)
+            except Exception:
+                continue
+            tag = str(n.outbound.get("tag") or "")
+            if not tag or tag in seen_tags:
+                continue
+            seen_tags.add(tag)
+            speed_outbounds.append(n.outbound)
+            labels_by_tag[tag] = link
+
+        for p in res.healthy_clash_proxies:
+            try:
+                n = node_from_clash_proxy(p)
+            except Exception:
+                continue
+            if not n:
+                continue
+            tag = str(n.outbound.get("tag") or "")
+            if not tag or tag in seen_tags:
+                continue
+            seen_tags.add(tag)
+            speed_outbounds.append(n.outbound)
+            labels_by_tag[tag] = str(p.get("name") or tag)
+
+        try:
+            fast = await find_fast_nodes(
+                singbox_path=settings.singbox_path,
+                clash_api_host=settings.clash_api_host,
+                clash_api_port=settings.clash_api_port,
+                outbounds=speed_outbounds,
+                labels_by_tag=labels_by_tag,
+                threshold_kib_s=speed_threshold_kib_s,
+                max_nodes=speed_max_nodes,
+                concurrency=speed_concurrency,
+                download_bytes=speed_download_bytes,
+                upload_bytes=speed_upload_bytes,
+                timeout_seconds=speed_timeout_seconds,
+            )
+            fast_bytes = render_fast_list(fast)
+            fast_count = len(fast)
+        except Exception:
+            fast_bytes = b"\n"
+            fast_count = 0
+
     txt_path = settings.github_output_txt_path
     yml_path = settings.github_output_yaml_path
 
@@ -115,6 +178,10 @@ async def main() -> None:
     os.makedirs(os.path.dirname(iran_path) or ".", exist_ok=True)
     with open(iran_path, "wb") as f:
         f.write(iran_bytes)
+
+    os.makedirs(os.path.dirname(fast_path) or ".", exist_ok=True)
+    with open(fast_path, "wb") as f:
+        f.write(fast_bytes)
 
     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     await send_document(
@@ -140,10 +207,18 @@ async def main() -> None:
         caption=f"Reachable from {check_host_country.upper()} (TCP): {len(iran_ok)}",
     )
 
+    await send_document(
+        settings.telegram_bot_token,
+        settings.admin_chat_id,
+        filename=f"fast_{ts}.txt",
+        content=fast_bytes,
+        caption=f"Fast (dl+ul >= {speed_threshold_kib_s} KiB/s): {fast_count}",
+    )
+
     await send_message(
         settings.telegram_bot_token,
         settings.admin_chat_id,
-        f"تمام شد. links={len(res.healthy_links)} proxies={len(res.healthy_clash_proxies)} ir={len(iran_ok)}",
+        f"تمام شد. links={len(res.healthy_links)} proxies={len(res.healthy_clash_proxies)} ir={len(iran_ok)} fast={fast_count}",
     )
 
 
