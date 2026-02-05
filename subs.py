@@ -190,8 +190,7 @@ def node_from_share_link(link: str) -> Node:
                     tls["reality"]["public_key"] = pbk
                 if sid:
                     tls["reality"]["short_id"] = sid
-                if fp:
-                    tls["utls"] = {"enabled": True, "fingerprint": fp}
+                tls["utls"] = {"enabled": True, "fingerprint": fp or "chrome"}
             outbound["tls"] = tls
 
         if transport == "ws":
@@ -293,6 +292,24 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
             if proxy.get("sni"):
                 tls["server_name"] = proxy.get("sni")
             outbound["tls"] = tls
+
+        if ptype == "vless":
+            reality_opts = proxy.get("reality-opts")
+            if isinstance(reality_opts, dict):
+                tls = outbound.get("tls") or {"enabled": True}
+                tls["reality"] = {"enabled": True}
+                if reality_opts.get("public-key"):
+                    tls["reality"]["public_key"] = reality_opts.get("public-key")
+                if reality_opts.get("short-id"):
+                    tls["reality"]["short_id"] = reality_opts.get("short-id")
+                fp = proxy.get("client-fingerprint") or "chrome"
+                tls["utls"] = {"enabled": True, "fingerprint": fp}
+                outbound["tls"] = tls
+
+        tls = outbound.get("tls")
+        if isinstance(tls, dict) and isinstance(tls.get("reality"), dict) and tls.get("reality", {}).get("enabled"):
+            if not isinstance(tls.get("utls"), dict):
+                tls["utls"] = {"enabled": True, "fingerprint": "chrome"}
 
         network = (proxy.get("network") or "tcp").lower()
         if network == "ws":
