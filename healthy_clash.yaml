@@ -4,23 +4,6 @@ allow-lan: true
 mode: Rule
 log-level: silent
 proxies:
-- name: GB_76d34_0013
-  server: 82.198.246.97
-  port: 180
-  type: vmess
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  udp: true
-- name: MK_76d34_0024
-  server: 46.183.185.37
-  port: 989
-  type: ss
-  cipher: aes-256-cfb
-  password: f8f7aCzcPKbsF8p3
-  udp: true
 - name: US_76d34_0037
   server: 37.19.198.236
   port: 443
@@ -28,15 +11,15 @@ proxies:
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: VN_76d34_0044
-  server: 103.186.154.180
+- name: VN_76d34_0043
+  server: 103.186.155.209
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_76d34_0043
-  server: 103.186.155.209
+- name: VN_76d34_0044
+  server: 103.186.154.180
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -77,15 +60,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_76d34_0051
-  server: 103.186.155.144
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_76d34_0050
-  server: 103.186.155.76
+- name: VN_76d34_0053
+  server: 103.186.154.247
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -105,15 +81,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_76d34_0053
-  server: 103.186.154.247
+- name: VN_76d34_0055
+  server: 103.186.155.203
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_76d34_0055
-  server: 103.186.155.203
+- name: VN_76d34_0050
+  server: 103.186.155.76
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -140,8 +116,36 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
+- name: VN_76d34_0051
+  server: 103.186.155.144
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
 - name: VN_76d34_0059
   server: 103.186.155.47
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_76d34_0061
+  server: 103.186.155.28
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_76d34_0063
+  server: 103.186.155.85
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_76d34_0062
+  server: 103.186.155.60
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -161,15 +165,8 @@ proxies:
   cipher: rc4-md5
   password: b13c4c021cec2c0b
   udp: true
-- name: VN_76d34_0061
-  server: 103.186.155.28
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_76d34_0062
-  server: 103.186.155.60
+- name: VN_76d34_0065
+  server: 103.186.154.79
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -182,26 +179,12 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_76d34_0063
-  server: 103.186.155.85
+- name: 🇻🇳 越南 | VNM 2
+  server: 103.186.154.59
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_76d34_0065
-  server: 103.186.154.79
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: 🇰🇷 韩国 | KOR 3
-  server: 121.170.203.147
-  port: 19203
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
   udp: true
 - name: 🇻🇳 越南 | VNM
   server: 103.186.155.120
@@ -210,12 +193,12 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: 🇻🇳 越南 | VNM 2
-  server: 103.186.154.59
-  port: 38388
+- name: 🇰🇷 韩国 | KOR 5
+  server: 221.139.79.20
+  port: 29707
   type: ss
   cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  password: qwerREWQ@@
   udp: true
 - name: 🇺🇸 美国 | USA 46
   server: bbnnhyt.7777112.xyz
@@ -233,12 +216,21 @@ proxies:
     headers:
       Host: bbnnhyt.7777112.xyz
   udp: true
-- name: 🇰🇷 韩国 | KOR 5
-  server: 221.139.79.20
-  port: 29707
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
+- name: 🇺🇸 美国 | USA 37
+  server: vvbght.932.pp.ua
+  port: 80
+  type: vmess
+  uuid: 4115f84d-3b03-4b03-babf-21b36b2f9c03
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: vvbght.932.pp.ua
+  network: ws
+  ws-opts:
+    path: /GgigazFGDLgFWDItkD5XgXAL
+    headers:
+      Host: vvbght.932.pp.ua
   udp: true
 proxy-groups:
 - name: AUTO
@@ -246,37 +238,35 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - GB_76d34_0013
-  - MK_76d34_0024
   - US_76d34_0037
-  - VN_76d34_0044
   - VN_76d34_0043
+  - VN_76d34_0044
   - VN_76d34_0045
   - VN_76d34_0046
   - VN_76d34_0047
   - VN_76d34_0048
   - VN_76d34_0049
-  - VN_76d34_0051
-  - VN_76d34_0050
+  - VN_76d34_0053
   - VN_76d34_0052
   - VN_76d34_0054
-  - VN_76d34_0053
   - VN_76d34_0055
+  - VN_76d34_0050
   - VN_76d34_0056
   - VN_76d34_0057
   - VN_76d34_0058
+  - VN_76d34_0051
   - VN_76d34_0059
+  - VN_76d34_0061
+  - VN_76d34_0063
+  - VN_76d34_0062
   - VN_76d34_0060
   - 🇦🇪 阿联酋 | ARE
-  - VN_76d34_0061
-  - VN_76d34_0062
-  - VN_76d34_0064
-  - VN_76d34_0063
   - VN_76d34_0065
-  - 🇰🇷 韩国 | KOR 3
-  - 🇻🇳 越南 | VNM
+  - VN_76d34_0064
   - 🇻🇳 越南 | VNM 2
-  - 🇺🇸 美国 | USA 46
+  - 🇻🇳 越南 | VNM
   - 🇰🇷 韩国 | KOR 5
+  - 🇺🇸 美国 | USA 46
+  - 🇺🇸 美国 | USA 37
 rules:
 - MATCH,AUTO
