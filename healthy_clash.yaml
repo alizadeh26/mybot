@@ -28,15 +28,15 @@ proxies:
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: VN_93dad_0044
-  server: 103.186.154.180
+- name: VN_93dad_0043
+  server: 103.186.155.209
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0043
-  server: 103.186.155.209
+- name: VN_93dad_0045
+  server: 103.186.155.44
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -49,8 +49,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0045
-  server: 103.186.155.44
+- name: VN_93dad_0044
+  server: 103.186.154.180
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -77,15 +77,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0050
-  server: 103.186.155.76
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_93dad_0052
-  server: 103.186.154.237
+- name: VN_93dad_0051
+  server: 103.186.155.144
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -98,15 +91,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0051
-  server: 103.186.155.144
-  port: 38388
-  type: ss
-  cipher: aes-256-cfb
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  udp: true
-- name: VN_93dad_0056
-  server: 103.186.154.194
+- name: VN_93dad_0050
+  server: 103.186.155.76
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -119,8 +105,22 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
+- name: VN_93dad_0052
+  server: 103.186.154.237
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
 - name: VN_93dad_0054
   server: 103.186.155.27
+  port: 38388
+  type: ss
+  cipher: aes-256-cfb
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  udp: true
+- name: VN_93dad_0056
+  server: 103.186.154.194
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -147,15 +147,15 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0061
-  server: 103.186.155.28
+- name: VN_93dad_0060
+  server: 103.186.155.49
   port: 38388
   type: ss
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0063
-  server: 103.186.155.85
+- name: VN_93dad_0061
+  server: 103.186.155.28
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -182,8 +182,8 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: VN_93dad_0060
-  server: 103.186.155.49
+- name: VN_93dad_0063
+  server: 103.186.155.85
   port: 38388
   type: ss
   cipher: aes-256-cfb
@@ -221,38 +221,6 @@ proxies:
     headers:
       Host: hhhnmju.932.pp.ua
   udp: true
-- name: 🇺🇸 美国 | USA 4
-  server: vvvbnj.taipei102.indevs.in
-  port: 80
-  type: vmess
-  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: vvvbnj.taipei102.indevs.in
-  network: ws
-  ws-opts:
-    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
-    headers:
-      Host: vvvbnj.taipei102.indevs.in
-  udp: true
-- name: 🇺🇸 美国 | USA 21
-  server: nnnmghju.taipei102.indevs.in
-  port: 80
-  type: vmess
-  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: nnnmghju.taipei102.indevs.in
-  network: ws
-  ws-opts:
-    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
-    headers:
-      Host: nnnmghju.taipei102.indevs.in
-  udp: true
 - name: 🇺🇸 美国 | USA 8
   server: eefrt.890699.xyz
   port: 80
@@ -268,6 +236,22 @@ proxies:
     path: /Iu415Fpf5REYxWLpTGA5AqzZ2Mj
     headers:
       Host: eefrT.890699.XYZ
+  udp: true
+- name: 🇺🇸 美国 | USA 4
+  server: vvvbnj.taipei102.indevs.in
+  port: 80
+  type: vmess
+  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: vvvbnj.taipei102.indevs.in
+  network: ws
+  ws-opts:
+    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
+    headers:
+      Host: vvvbnj.taipei102.indevs.in
   udp: true
 - name: 🇺🇸 美国 | USA 19
   server: nnnmjku.932.pp.ua
@@ -285,6 +269,22 @@ proxies:
     headers:
       Host: nnnmjku.932.pp.ua
   udp: true
+- name: 🇺🇸 美国 | USA 21
+  server: nnnmghju.taipei102.indevs.in
+  port: 80
+  type: vmess
+  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: nnnmghju.taipei102.indevs.in
+  network: ws
+  ws-opts:
+    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
+    headers:
+      Host: nnnmghju.taipei102.indevs.in
+  udp: true
 - name: 🇺🇸 美国 | USA 47
   server: hhhnmkl.288288.shop
   port: 80
@@ -297,6 +297,20 @@ proxies:
     path: /s2VHv9VUVzg35A6ueyyZnWd
     headers:
       Host: hHHnMKl.288288.ShOP
+  udp: true
+- name: 🇺🇸 美国 | USA 34
+  server: jjju8.7777198.xyz
+  port: 443
+  type: vless
+  uuid: b9bb332d-5e0d-41af-adac-49362dde8661
+  tls: true
+  servername: jjju8.7777198.xyz
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /8Midq8kt5Q2GkKGWRMg
+    headers:
+      Host: jjju8.7777198.xyz
   udp: true
 - name: 🇻🇳 越南 | VNM
   server: 103.186.154.227
@@ -319,20 +333,6 @@ proxies:
   cipher: aes-256-cfb
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   udp: true
-- name: 🇺🇸 美国 | USA 34
-  server: jjju8.7777198.xyz
-  port: 443
-  type: vless
-  uuid: b9bb332d-5e0d-41af-adac-49362dde8661
-  tls: true
-  servername: jjju8.7777198.xyz
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /8Midq8kt5Q2GkKGWRMg
-    headers:
-      Host: jjju8.7777198.xyz
-  udp: true
 proxy-groups:
 - name: AUTO
   type: url-test
@@ -342,39 +342,39 @@ proxy-groups:
   - GB_93dad_0013
   - MK_93dad_0024
   - US_93dad_0037
-  - VN_93dad_0044
   - VN_93dad_0043
-  - VN_93dad_0046
   - VN_93dad_0045
+  - VN_93dad_0046
+  - VN_93dad_0044
   - VN_93dad_0047
   - VN_93dad_0048
   - VN_93dad_0049
-  - VN_93dad_0050
-  - VN_93dad_0052
-  - VN_93dad_0053
   - VN_93dad_0051
-  - VN_93dad_0056
+  - VN_93dad_0053
+  - VN_93dad_0050
   - VN_93dad_0055
+  - VN_93dad_0052
   - VN_93dad_0054
+  - VN_93dad_0056
   - VN_93dad_0057
   - VN_93dad_0058
   - VN_93dad_0059
+  - VN_93dad_0060
   - VN_93dad_0061
-  - VN_93dad_0063
   - VN_93dad_0064
   - VN_93dad_0065
   - VN_93dad_0062
-  - VN_93dad_0060
+  - VN_93dad_0063
   - 🇺🇸 美国 | USA 6
   - 🇺🇸 美国 | USA
-  - 🇺🇸 美国 | USA 4
-  - 🇺🇸 美国 | USA 21
   - 🇺🇸 美国 | USA 8
+  - 🇺🇸 美国 | USA 4
   - 🇺🇸 美国 | USA 19
+  - 🇺🇸 美国 | USA 21
   - 🇺🇸 美国 | USA 47
+  - 🇺🇸 美国 | USA 34
   - 🇻🇳 越南 | VNM
   - 🇻🇳 越南 | VNM 2
   - 🇻🇳 越南 | VNM 3
-  - 🇺🇸 美国 | USA 34
 rules:
 - MATCH,AUTO
