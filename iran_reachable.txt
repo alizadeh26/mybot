@@ -1,1 +1,1 @@
-vless://686c62d9-17a7-43c9-a40a-f6747df60a9f@104.18.32.47:2096?path=%2F&security=tls&alpn=http%2F1.1&encryption=none&host=ca.adobe-connect.top&fp=chrome&type=ws&sni=ca.adobe-connect.top#Server 84 🇺🇸
+vless://e6c7ed63-89db-4ae1-a3f8-7a722921b3b2@104.18.32.47:443?alpn=http%2F1.1&encryption=none&host=apii.onlineshoppingez.ir&fp=chrome&path=%2FO1w0n3vYgFKYs7EzNAvLPvOp&security=tls&sni=apii.onlineshoppingez.ir&type=ws#Server 76 🇺🇸
