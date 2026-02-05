@@ -39,6 +39,20 @@ def _normalize_vless_flow(flow: str) -> str | None:
     return None
 
 
+def _is_valid_reality_public_key(pbk: str) -> bool:
+    s = (pbk or "").strip()
+    if not s:
+        return False
+    missing = (-len(s)) % 4
+    if missing:
+        s += "=" * missing
+    try:
+        raw = base64.urlsafe_b64decode(s.encode())
+    except Exception:
+        return False
+    return len(raw) == 32
+
+
 def _is_probably_yaml(text: str) -> bool:
     t = text.lstrip()
     return t.startswith("proxies:") or ("\nproxies:" in t) or ("proxy-groups:" in t)
@@ -204,12 +218,11 @@ def node_from_share_link(link: str) -> Node:
             if sni:
                 tls["server_name"] = sni
             if params.get("security", [""])[0].lower() == "reality":
-                tls["reality"] = {"enabled": True}
-                if pbk:
-                    tls["reality"]["public_key"] = pbk
-                if sid:
-                    tls["reality"]["short_id"] = sid
-                tls["utls"] = {"enabled": True, "fingerprint": fp or "chrome"}
+                if _is_valid_reality_public_key(pbk):
+                    tls["reality"] = {"enabled": True, "public_key": pbk}
+                    if sid:
+                        tls["reality"]["short_id"] = sid
+                    tls["utls"] = {"enabled": True, "fingerprint": fp or "chrome"}
             outbound["tls"] = tls
 
         if transport == "ws":
@@ -317,14 +330,14 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
             reality_opts = proxy.get("reality-opts")
             if isinstance(reality_opts, dict):
                 tls = outbound.get("tls") or {"enabled": True}
-                tls["reality"] = {"enabled": True}
-                if reality_opts.get("public-key"):
-                    tls["reality"]["public_key"] = reality_opts.get("public-key")
-                if reality_opts.get("short-id"):
-                    tls["reality"]["short_id"] = reality_opts.get("short-id")
-                fp = proxy.get("client-fingerprint") or "chrome"
-                tls["utls"] = {"enabled": True, "fingerprint": fp}
-                outbound["tls"] = tls
+                pbk = str(reality_opts.get("public-key") or "")
+                if _is_valid_reality_public_key(pbk):
+                    tls["reality"] = {"enabled": True, "public_key": pbk}
+                    if reality_opts.get("short-id"):
+                        tls["reality"]["short_id"] = reality_opts.get("short-id")
+                    fp = proxy.get("client-fingerprint") or "chrome"
+                    tls["utls"] = {"enabled": True, "fingerprint": fp}
+                    outbound["tls"] = tls
 
         tls = outbound.get("tls")
         if isinstance(tls, dict) and isinstance(tls.get("reality"), dict) and tls.get("reality", {}).get("enabled"):
