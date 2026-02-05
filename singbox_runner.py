@@ -38,12 +38,36 @@ class SingBoxRunner:
     async def __aexit__(self, exc_type, exc, tb) -> None:
         await self.stop()
 
-    async def start(self, outbounds: list[dict]) -> ClashApiConfig:
+    async def start(
+        self,
+        outbounds: list[dict],
+        enable_selector: bool = False,
+        selector_tag: str = "PROXY",
+    ) -> ClashApiConfig:
         if self._proc is not None:
             raise RuntimeError("sing-box already started")
 
         secret = secrets.token_urlsafe(24)
         self._secret = secret
+
+        outbound_tags = [str(o.get("tag")) for o in outbounds if isinstance(o, dict) and o.get("tag")]
+
+        config_outbounds: list[dict] = [
+            {"type": "direct", "tag": "DIRECT"},
+            *outbounds,
+        ]
+        final_outbound = "DIRECT"
+
+        if enable_selector and outbound_tags:
+            config_outbounds.append(
+                {
+                    "type": "selector",
+                    "tag": selector_tag,
+                    "outbounds": outbound_tags,
+                    "default": outbound_tags[0],
+                }
+            )
+            final_outbound = selector_tag
 
         config = {
             "log": {"level": "warn"},
@@ -55,11 +79,8 @@ class SingBoxRunner:
                     "listen_port": 10809,
                 }
             ],
-            "outbounds": [
-                {"type": "direct", "tag": "DIRECT"},
-                *outbounds,
-            ],
-            "route": {"final": "DIRECT"},
+            "outbounds": config_outbounds,
+            "route": {"final": final_outbound},
             "experimental": {
                 "clash_api": {
                     "external_controller": f"{self._host}:{self._port}",
@@ -162,3 +183,19 @@ class SingBoxRunner:
                 return int(data["delay"])
             except Exception:
                 return None
+
+    @staticmethod
+    async def select_outbound(
+        api: ClashApiConfig,
+        selector_tag: str,
+        selected_tag: str,
+    ) -> bool:
+        headers = {"Authorization": f"Bearer {api.secret}"}
+        encoded_selector = urllib.parse.quote(selector_tag, safe="")
+        async with httpx.AsyncClient(timeout=10) as client:
+            r = await client.put(
+                f"{api.base_url}/proxies/{encoded_selector}",
+                headers=headers,
+                json={"name": selected_tag},
+            )
+            return r.status_code in (200, 204)
