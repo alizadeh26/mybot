@@ -1,9 +1,8 @@
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=none&encryption=none&type=grpc#Server 14 🇺🇸	dl_kib_s=7900	ul_kib_s=6000
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?type=grpc&mode=gun&authority=/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1&fp=chrome&sni=/?---@Azarbayjab1_Net---@Azarbayjab1_Net---@azarbayjab1_Net---@azarbayjab1_Net---@Azarbayjab1_Net&encryption=none#Server 20 🇺🇸	dl_kib_s=7569	ul_kib_s=5172
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?mode=gun&security=none&encryption=none&type=grpc#Server 21 🇺🇸	dl_kib_s=7705	ul_kib_s=4469
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.116:8880?encryption=none&type=grpc#Server 15 🇺🇸	dl_kib_s=6995	ul_kib_s=5039
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=&encryption=none&authority=/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1&fp=chrome&type=grpc&sni=/?---@Azarbayjab1_Net---@Azarbayjab1_Net---@azarbayjab1_Net---@azarbayjab1_Net---@Azarbayjab1_Net#Server 12 🇺🇸	dl_kib_s=7362	ul_kib_s=4605
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?encryption=none&type=grpc&security=none#Server 27 🇺🇸	dl_kib_s=6878	ul_kib_s=4598
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880/?type=grpc&amp;encryption=none&amp;flow=#Server 23 🇺🇸	dl_kib_s=6531	ul_kib_s=4890
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?security=&encryption=none&type=grpc#Server 18 🇺🇸	dl_kib_s=6564	ul_kib_s=4680
-vless://c33275fd-a4fa-470d-90e4-55da39d849a8@129.212.220.224:443?security=tls&encryption=none&headerType=none&fp=chrome&type=tcp&sni=panbehpanel.ir#Server 16 🇳🇱	dl_kib_s=599	ul_kib_s=1336
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880/?type=grpc&amp;encryption=none&amp;flow=#Server 23 🇺🇸	dl_kib_s=5395	ul_kib_s=4190
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?security=&encryption=none&type=grpc#Server 18 🇺🇸	dl_kib_s=4753	ul_kib_s=4023
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?encryption=none&type=grpc&security=none#Server 27 🇺🇸	dl_kib_s=4554	ul_kib_s=3283
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.116:8880?encryption=none&type=grpc#Server 15 🇺🇸	dl_kib_s=4001	ul_kib_s=2329
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=&encryption=none&authority=/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1&fp=chrome&type=grpc&sni=/?---@Azarbayjab1_Net---@Azarbayjab1_Net---@azarbayjab1_Net---@azarbayjab1_Net---@Azarbayjab1_Net#Server 12 🇺🇸	dl_kib_s=4079	ul_kib_s=2021
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?type=grpc&mode=gun&authority=/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1&fp=chrome&sni=/?---@Azarbayjab1_Net---@Azarbayjab1_Net---@azarbayjab1_Net---@azarbayjab1_Net---@Azarbayjab1_Net&encryption=none#Server 20 🇺🇸	dl_kib_s=3636	ul_kib_s=2121
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=none&encryption=none&type=grpc#Server 14 🇺🇸	dl_kib_s=3202	ul_kib_s=2552
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?mode=gun&security=none&encryption=none&type=grpc#Server 21 🇺🇸	dl_kib_s=3226	ul_kib_s=2487
