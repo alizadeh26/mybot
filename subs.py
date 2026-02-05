@@ -28,6 +28,15 @@ def _normalize_ss_method(method: str) -> str:
     return m
 
 
+def _normalize_vless_flow(flow: str) -> str | None:
+    f = (flow or "").strip().lower()
+    if not f:
+        return None
+    if f == "xtls-rprx-vision":
+        return f
+    return None
+
+
 def _is_probably_yaml(text: str) -> bool:
     t = text.lstrip()
     return t.startswith("proxies:") or ("\nproxies:" in t) or ("proxy-groups:" in t)
@@ -184,8 +193,9 @@ def node_from_share_link(link: str) -> Node:
             "server_port": int(port) if port else 443,
             "uuid": uuid,
         }
-        if flow:
-            outbound["flow"] = flow
+        nflow = _normalize_vless_flow(flow)
+        if nflow:
+            outbound["flow"] = nflow
 
         if tls_enabled:
             tls: dict = {"enabled": True}
@@ -288,8 +298,9 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
             outbound["security"] = (proxy.get("cipher") or proxy.get("security") or "auto").lower()
         elif ptype == "vless":
             outbound["uuid"] = proxy.get("uuid")
-            if proxy.get("flow"):
-                outbound["flow"] = proxy.get("flow")
+            nflow = _normalize_vless_flow(str(proxy.get("flow") or ""))
+            if nflow:
+                outbound["flow"] = nflow
         elif ptype == "trojan":
             outbound["password"] = proxy.get("password")
 
