@@ -25,6 +25,8 @@ def _normalize_ss_method(method: str) -> str:
     m = (method or "").strip().lower()
     if m == "chacha20-poly1305":
         return "chacha20-ietf-poly1305"
+    if m == "chacha20":
+        return "chacha20-ietf"
     return m
 
 
