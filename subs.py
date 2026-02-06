@@ -53,6 +53,36 @@ def _is_valid_reality_public_key(pbk: str) -> bool:
     return len(raw) == 32
 
 
+def _is_valid_ss2022_key(method: str, password: str) -> bool:
+    m = (method or "").strip().lower()
+    if not m.startswith("2022-"):
+        return True
+
+    required_len: int | None = None
+    if "aes-128-gcm" in m:
+        required_len = 16
+    elif "aes-256-gcm" in m or "chacha20" in m:
+        required_len = 32
+
+    if required_len is None:
+        return False
+
+    s = (password or "").strip()
+    if not s:
+        return False
+    missing = (-len(s)) % 4
+    if missing:
+        s += "=" * missing
+    try:
+        raw = base64.b64decode(s.encode(), validate=True)
+    except Exception:
+        try:
+            raw = base64.urlsafe_b64decode(s.encode())
+        except Exception:
+            return False
+    return len(raw) == required_len
+
+
 def _is_probably_yaml(text: str) -> bool:
     t = text.lstrip()
     return t.startswith("proxies:") or ("\nproxies:" in t) or ("proxy-groups:" in t)
@@ -278,6 +308,8 @@ def node_from_share_link(link: str) -> Node:
         name = urllib.parse.unquote(u.fragment) if u.fragment else "ss"
         tag = _safe_tag(name)
         host, port, method, password = _parse_ss(link)
+        if not _is_valid_ss2022_key(method, password):
+            raise ValueError("Invalid shadowsocks 2022 key")
         outbound: dict = {
             "type": "shadowsocks",
             "tag": tag,
@@ -366,13 +398,17 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
     if ptype in ("ss", "shadowsocks"):
         server = proxy.get("server")
         port = int(proxy.get("port"))
+        method = _normalize_ss_method(str(proxy.get("cipher") or proxy.get("method") or ""))
+        password = str(proxy.get("password") or "")
+        if not _is_valid_ss2022_key(method, password):
+            return None
         outbound = {
             "type": "shadowsocks",
             "tag": tag,
             "server": server,
             "server_port": port,
-            "method": _normalize_ss_method(str(proxy.get("cipher") or proxy.get("method") or "")),
-            "password": proxy.get("password"),
+            "method": method,
+            "password": password,
         }
         return Node(tag=tag, outbound=outbound, export_link=None, export_clash_proxy=proxy)
 
