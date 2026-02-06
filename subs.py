@@ -71,7 +71,7 @@ def _is_valid_ss2022_key(method: str, password: str) -> bool:
     if ":" in s:
         s = s.split(":", 1)[0]
     if s:
-        allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-=")
+        allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+/=")
         cut = 0
         for ch in s:
             if ch in allowed:
