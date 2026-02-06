@@ -20,22 +20,6 @@ proxies:
     headers:
       Host: nnnmghju.taipei102.indevs.in
   udp: true
-- name: 🇺🇸 美国 | USA 9
-  server: vvvbnh.taipei102.indevs.in
-  port: 80
-  type: vmess
-  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: vvvbnh.taipei102.indevs.in
-  network: ws
-  ws-opts:
-    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
-    headers:
-      Host: vvvbnh.taipei102.indevs.in
-  udp: true
 - name: 🇺🇸 美国 | USA 10
   server: hhynnmki.www890604.dpdns.org
   port: 80
@@ -51,6 +35,22 @@ proxies:
     path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
     headers:
       Host: hhynnmki.www890604.dpdns.org
+  udp: true
+- name: 🇺🇸 美国 | USA 9
+  server: vvvbnh.taipei102.indevs.in
+  port: 80
+  type: vmess
+  uuid: 2bfe58f7-da1d-45df-ab43-7c665b20ee29
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: vvvbnh.taipei102.indevs.in
+  network: ws
+  ws-opts:
+    path: /t1UV4HSrzbWGmJtbBhmKb8nOkg
+    headers:
+      Host: vvvbnh.taipei102.indevs.in
   udp: true
 - name: 🇺🇸 美国 | USA 24
   server: ccvf.un2027.indevs.in
@@ -99,21 +99,21 @@ proxies:
     headers:
       Host: bbgnmki.0890604.xyz
   udp: true
-- name: 🇺🇸 美国 | USA 3
-  server: vvvbbnhu.191266.xyz
+- name: 🇺🇸 美国 | USA 32
+  server: ccvbg.un2026.indevs.in
   port: 80
   type: vmess
-  uuid: 98b419ef-83a2-4d1b-a23d-566b7f24477b
+  uuid: 827beb2a-f97a-4b23-b733-adef30c98e17
   alterId: 0
   cipher: auto
   tls: false
   skip-cert-verify: false
-  servername: VVvbBnhU.191266.xYZ
+  servername: ccvbg.un2026.indevs.in
   network: ws
   ws-opts:
-    path: /Iu415Fpf5REYxWLpTGA5AqzZ2Mj
+    path: /HISLfofvqzd3a3izxYyZXOF
     headers:
-      Host: VVVBbNhu.191266.XYz
+      Host: ccvbg.un2026.indevs.in
   udp: true
 - name: 🇺🇸 美国 | USA 35
   server: bbbhny.191268.xyz
@@ -130,22 +130,6 @@ proxies:
     path: /GgigazFGDLgFWDItkD5XgXAL
     headers:
       Host: bbbHNY.191268.Xyz
-  udp: true
-- name: 🇺🇸 美国 | USA 42
-  server: hhnmju.11890604.xyz
-  port: 80
-  type: vmess
-  uuid: 827beb2a-f97a-4b23-b733-adef30c98e17
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: hhnmju.11890604.xyz
-  network: ws
-  ws-opts:
-    path: /HISLfofvqzd3a3izxYyZXOF
-    headers:
-      Host: hhnmju.11890604.xyz
   udp: true
 - name: 🇺🇸 美国 | USA 39
   server: vvbght.932.pp.ua
@@ -177,6 +161,22 @@ proxies:
     headers:
       Host: gGGGGGgb.890404.indeVS.IN
   udp: true
+- name: 🇺🇸 美国 | USA 42
+  server: hhnmju.11890604.xyz
+  port: 80
+  type: vmess
+  uuid: 827beb2a-f97a-4b23-b733-adef30c98e17
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: hhnmju.11890604.xyz
+  network: ws
+  ws-opts:
+    path: /HISLfofvqzd3a3izxYyZXOF
+    headers:
+      Host: hhnmju.11890604.xyz
+  udp: true
 - name: 🇺🇸 美国 | USA 46
   server: nnnmko.0890604.xyz
   port: 80
@@ -193,54 +193,6 @@ proxies:
     headers:
       Host: nnnmko.0890604.xyz
   udp: true
-- name: 🇺🇸 美国 | USA 40
-  server: kkkiuy.890699.xyz
-  port: 80
-  type: vmess
-  uuid: 98b419ef-83a2-4d1b-a23d-566b7f24477b
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: kKkIuy.890699.xyZ
-  network: ws
-  ws-opts:
-    path: /Iu415Fpf5REYxWLpTGA5AqzZ2Mj
-    headers:
-      Host: KKKiUy.890699.XyZ
-  udp: true
-- name: 🇺🇸 美国 | USA 37
-  server: ffffv.2030.pp.ua
-  port: 443
-  type: vmess
-  uuid: fc3704d6-8e5e-443a-bd5b-20ec7cfbe990
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  servername: ffffv.2030.pp.ua
-  network: ws
-  ws-opts:
-    path: /eszjp4nTT8TxDHFepMpfNkCk8
-    headers:
-      Host: ffffv.2030.pp.ua
-  udp: true
-- name: 🇺🇸 美国 | USA 32
-  server: ccvbg.un2026.indevs.in
-  port: 80
-  type: vmess
-  uuid: 827beb2a-f97a-4b23-b733-adef30c98e17
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  servername: ccvbg.un2026.indevs.in
-  network: ws
-  ws-opts:
-    path: /HISLfofvqzd3a3izxYyZXOF
-    headers:
-      Host: ccvbg.un2026.indevs.in
-  udp: true
 - name: 🇺🇸US-173.249.209.146-5056 | 41.361MB
   server: 173.249.209.146
   port: 20086
@@ -253,21 +205,6 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇰🇷KR-146.56.136.237-0352 | 10.917MB
-  server: seoul02.zgjok.com
-  port: 443
-  type: vmess
-  uuid: 1a1e5196-eab4-4772-9012-65c27f19a524
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  servername: 🇰🇷KR-146.56.136.237-0352 | 10.917MB
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: seoul02.zgjok.com
 - name: 🇰🇷KR-152.70.88.177-0349 | 11.852MB
   server: seoul03.zgjok.com
   port: 443
@@ -283,20 +220,50 @@ proxies:
     path: /
     headers:
       Host: seoul03.zgjok.com
-- name: RELAY-154.83.2.156-0641 | 0.082MB
-  server: 154.83.2.156
-  port: 2086
+- name: 🇸🇬SG-158.178.230.34-0363 | 4.687MB
+  server: singapore02.zgjok.com
+  port: 443
   type: vmess
-  uuid: 92373ed1-78a8-4cbe-aa06-54af1edd0471
+  uuid: 780c7671-e8c8-45ab-922b-4fdfc4310aa0
   alterId: 0
   cipher: auto
-  tls: false
+  tls: true
   skip-cert-verify: false
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: v205.19740822.xyz
+      Host: singapore02.zgjok.com
+- name: 🇭🇰HK-47.243.63.35-0424 | 0.093MB
+  server: n1761214919.mv7wh.tech
+  port: 443
+  type: vmess
+  uuid: c592f040-faff-47dc-a464-9bccf2dd4e7b
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  servername: 🇭🇰HK-47.243.63.35-0424 | 0.093MB
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: n1761214919.mv7wh.tech
+- name: 🇰🇷KR-146.56.136.237-0352 | 10.917MB
+  server: seoul02.zgjok.com
+  port: 443
+  type: vmess
+  uuid: 1a1e5196-eab4-4772-9012-65c27f19a524
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  servername: 🇰🇷KR-146.56.136.237-0352 | 10.917MB
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: seoul02.zgjok.com
 proxy-groups:
 - name: AUTO
   type: url-test
@@ -304,23 +271,21 @@ proxy-groups:
   interval: 300
   proxies:
   - 🇺🇸 美国 | USA 2
-  - 🇺🇸 美国 | USA 9
   - 🇺🇸 美国 | USA 10
+  - 🇺🇸 美国 | USA 9
   - 🇺🇸 美国 | USA 24
   - 🇺🇸 美国 | USA 25
   - 🇺🇸 美国 | USA 31
-  - 🇺🇸 美国 | USA 3
+  - 🇺🇸 美国 | USA 32
   - 🇺🇸 美国 | USA 35
-  - 🇺🇸 美国 | USA 42
   - 🇺🇸 美国 | USA 39
   - 🇺🇸 美国 | USA 43
+  - 🇺🇸 美国 | USA 42
   - 🇺🇸 美国 | USA 46
-  - 🇺🇸 美国 | USA 40
-  - 🇺🇸 美国 | USA 37
-  - 🇺🇸 美国 | USA 32
   - 🇺🇸US-173.249.209.146-5056 | 41.361MB
-  - 🇰🇷KR-146.56.136.237-0352 | 10.917MB
   - 🇰🇷KR-152.70.88.177-0349 | 11.852MB
-  - RELAY-154.83.2.156-0641 | 0.082MB
+  - 🇸🇬SG-158.178.230.34-0363 | 4.687MB
+  - 🇭🇰HK-47.243.63.35-0424 | 0.093MB
+  - 🇰🇷KR-146.56.136.237-0352 | 10.917MB
 rules:
 - MATCH,AUTO
