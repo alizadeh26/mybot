@@ -53,7 +53,7 @@ class SingBoxRunner:
 
         def _is_valid_ss2022_key(method: str, password: str) -> bool:
             m = (method or "").strip().lower()
-            if not m.startswith("2022-"):
+            if "2022" not in m:
                 return True
             required_len: int | None = None
             if "aes-128-gcm" in m:
