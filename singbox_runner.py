@@ -49,11 +49,6 @@ class SingBoxRunner:
         if self._proc is not None:
             raise RuntimeError("sing-box already started")
 
-        self._outbounds_snapshot = filtered_outbounds.copy()
-
-        secret = secrets.token_urlsafe(24)
-        self._secret = secret
-
         def _is_valid_ss2022_key(method: str, password: str) -> bool:
             m = (method or "").strip().lower()
             if "2022" not in m:
@@ -101,6 +96,11 @@ class SingBoxRunner:
                 if not _is_valid_ss2022_key(method, password):
                     continue
             filtered_outbounds.append(o)
+
+        self._outbounds_snapshot = filtered_outbounds.copy()
+
+        secret = secrets.token_urlsafe(24)
+        self._secret = secret
 
         outbound_tags = [str(o.get("tag")) for o in filtered_outbounds if isinstance(o, dict) and o.get("tag")]
 
