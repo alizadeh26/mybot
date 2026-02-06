@@ -48,9 +48,6 @@ class SingBoxRunner:
         if self._proc is not None:
             raise RuntimeError("sing-box already started")
 
-        secret = secrets.token_urlsafe(24)
-        self._secret = secret
-
         def _is_valid_ss2022_key(method: str, password: str) -> bool:
             m = (method or "").strip().lower()
             if "2022" not in m:
@@ -106,76 +103,95 @@ class SingBoxRunner:
                 s = s[:cut]
             return s
 
-        filtered_outbounds: list[dict] = []
-        for o in outbounds:
-            if not isinstance(o, dict) or not o.get("tag"):
-                continue
-            if str(o.get("type") or "").lower() == "shadowsocks":
-                method = str(o.get("method") or "")
-                password = _sanitize_ss2022_password(method, str(o.get("password") or ""))
-                if not _is_valid_ss2022_key(method, password):
+        last_err: Exception | None = None
+        for attempt in range(2):
+            secret = secrets.token_urlsafe(24)
+            self._secret = secret
+
+            filtered_outbounds: list[dict] = []
+            for o in outbounds:
+                if not isinstance(o, dict) or not o.get("tag"):
                     continue
-                if password != o.get("password"):
-                    o = {**o, "password": password}
-            filtered_outbounds.append(o)
+                if str(o.get("type") or "").lower() == "shadowsocks":
+                    if attempt == 1:
+                        continue
+                    method = str(o.get("method") or "")
+                    password = _sanitize_ss2022_password(method, str(o.get("password") or ""))
+                    if not _is_valid_ss2022_key(method, password):
+                        continue
+                    if password != o.get("password"):
+                        o = {**o, "password": password}
+                filtered_outbounds.append(o)
 
-        outbound_tags = [str(o.get("tag")) for o in filtered_outbounds if isinstance(o, dict) and o.get("tag")]
+            outbound_tags = [str(o.get("tag")) for o in filtered_outbounds if isinstance(o, dict) and o.get("tag")]
 
-        config_outbounds: list[dict] = [
-            {"type": "direct", "tag": "DIRECT"},
-            *filtered_outbounds,
-        ]
-        final_outbound = "DIRECT"
+            config_outbounds: list[dict] = [
+                {"type": "direct", "tag": "DIRECT"},
+                *filtered_outbounds,
+            ]
+            final_outbound = "DIRECT"
 
-        if enable_selector and outbound_tags:
-            config_outbounds.append(
-                {
-                    "type": "selector",
-                    "tag": selector_tag,
-                    "outbounds": outbound_tags,
-                    "default": outbound_tags[0],
-                }
+            if enable_selector and outbound_tags:
+                config_outbounds.append(
+                    {
+                        "type": "selector",
+                        "tag": selector_tag,
+                        "outbounds": outbound_tags,
+                        "default": outbound_tags[0],
+                    }
+                )
+                final_outbound = selector_tag
+
+            config = {
+                "log": {"level": "warn"},
+                "inbounds": [
+                    {
+                        "type": "mixed",
+                        "tag": "mixed-in",
+                        "listen": "127.0.0.1",
+                        "listen_port": 10809,
+                    }
+                ],
+                "outbounds": config_outbounds,
+                "route": {"final": final_outbound},
+                "experimental": {
+                    "clash_api": {
+                        "external_controller": f"{self._host}:{self._port}",
+                        "secret": secret,
+                        "access_control_allow_origin": "*",
+                    }
+                },
+            }
+
+            tmpdir = tempfile.mkdtemp(prefix="sb-")
+            self._tmpdir = tmpdir
+            cfg_path = os.path.join(tmpdir, "config.json")
+            with open(cfg_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, ensure_ascii=False)
+
+            self._proc = await asyncio.create_subprocess_exec(
+                self._singbox_path,
+                "run",
+                "-c",
+                cfg_path,
+                stdout=asyncio.subprocess.DEVNULL,
+                stderr=asyncio.subprocess.PIPE,
             )
-            final_outbound = selector_tag
 
-        config = {
-            "log": {"level": "warn"},
-            "inbounds": [
-                {
-                    "type": "mixed",
-                    "tag": "mixed-in",
-                    "listen": "127.0.0.1",
-                    "listen_port": 10809,
-                }
-            ],
-            "outbounds": config_outbounds,
-            "route": {"final": final_outbound},
-            "experimental": {
-                "clash_api": {
-                    "external_controller": f"{self._host}:{self._port}",
-                    "secret": secret,
-                    "access_control_allow_origin": "*",
-                }
-            },
-        }
+            try:
+                await self._wait_ready(secret)
+                return ClashApiConfig(host=self._host, port=self._port, secret=secret)
+            except Exception as e:
+                last_err = e
+                msg = str(e).lower()
+                should_retry = attempt == 0 and ("decode key" in msg and "illegal base64" in msg)
+                await self.stop()
+                if not should_retry:
+                    raise
 
-        tmpdir = tempfile.mkdtemp(prefix="sb-")
-        self._tmpdir = tmpdir
-        cfg_path = os.path.join(tmpdir, "config.json")
-        with open(cfg_path, "w", encoding="utf-8") as f:
-            json.dump(config, f, ensure_ascii=False)
-
-        self._proc = await asyncio.create_subprocess_exec(
-            self._singbox_path,
-            "run",
-            "-c",
-            cfg_path,
-            stdout=asyncio.subprocess.DEVNULL,
-            stderr=asyncio.subprocess.PIPE,
-        )
-
-        await self._wait_ready(secret)
-        return ClashApiConfig(host=self._host, port=self._port, secret=secret)
+        if last_err:
+            raise last_err
+        raise RuntimeError("sing-box failed to start")
 
     async def _wait_ready(self, secret: str) -> None:
         headers = {"Authorization": f"Bearer {secret}"}
