@@ -3,7 +3,7 @@ name: VPN Healthcheck
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */1 * * *"  # every 1 hours
+    - cron: "0 */2 * * *"  # every 2 hours
 
 permissions:
   contents: write
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 110
 
     steps:
       - name: Checkout
