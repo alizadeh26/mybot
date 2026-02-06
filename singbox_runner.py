@@ -65,6 +65,15 @@ class SingBoxRunner:
             s = (password or "").strip()
             if ":" in s:
                 s = s.split(":", 1)[0]
+            if s:
+                allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-=")
+                cut = 0
+                for ch in s:
+                    if ch in allowed:
+                        cut += 1
+                    else:
+                        break
+                s = s[:cut]
             if not s:
                 return False
             missing = (-len(s)) % 4
