@@ -32,7 +32,6 @@ class SingBoxRunner:
         self._proc: asyncio.subprocess.Process | None = None
         self._tmpdir: str | None = None
         self._secret: str | None = None
-        self._outbounds_snapshot: list[dict] = []
 
     async def __aenter__(self) -> "SingBoxRunner":
         return self
@@ -48,6 +47,9 @@ class SingBoxRunner:
     ) -> ClashApiConfig:
         if self._proc is not None:
             raise RuntimeError("sing-box already started")
+
+        secret = secrets.token_urlsafe(24)
+        self._secret = secret
 
         def _is_valid_ss2022_key(method: str, password: str) -> bool:
             m = (method or "").strip().lower()
@@ -86,21 +88,36 @@ class SingBoxRunner:
                     return False
             return len(raw) == required_len
 
+        def _sanitize_ss2022_password(method: str, password: str) -> str:
+            m = (method or "").strip().lower()
+            if "2022" not in m:
+                return password
+            s = (password or "").strip()
+            if ":" in s:
+                s = s.split(":", 1)[0]
+            if s:
+                allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-=")
+                cut = 0
+                for ch in s:
+                    if ch in allowed:
+                        cut += 1
+                    else:
+                        break
+                s = s[:cut]
+            return s
+
         filtered_outbounds: list[dict] = []
         for o in outbounds:
             if not isinstance(o, dict) or not o.get("tag"):
                 continue
             if str(o.get("type") or "").lower() == "shadowsocks":
                 method = str(o.get("method") or "")
-                password = str(o.get("password") or "")
+                password = _sanitize_ss2022_password(method, str(o.get("password") or ""))
                 if not _is_valid_ss2022_key(method, password):
                     continue
+                if password != o.get("password"):
+                    o = {**o, "password": password}
             filtered_outbounds.append(o)
-
-        self._outbounds_snapshot = filtered_outbounds.copy()
-
-        secret = secrets.token_urlsafe(24)
-        self._secret = secret
 
         outbound_tags = [str(o.get("tag")) for o in filtered_outbounds if isinstance(o, dict) and o.get("tag")]
 
@@ -160,81 +177,33 @@ class SingBoxRunner:
         await self._wait_ready(secret)
         return ClashApiConfig(host=self._host, port=self._port, secret=secret)
 
-    async def _wait_ready(self, secret: str, max_retries: int = 3) -> None:
-        for attempt in range(max_retries + 1):
-            if self._proc is None:
-                raise RuntimeError("sing-box process not started")
-            ret = await self._proc.wait()
-            if ret == 0:
-                raise RuntimeError("sing-box exited unexpectedly before API ready")
-            if ret != 1:
-                raise RuntimeError(f"sing-box exited with code {ret}")
-            stderr = await self._proc.stderr.read()
-            stderr_text = stderr.decode(errors="ignore").strip()
-            if "FATAL" in stderr_text:
-                if attempt < max_retries and self._outbounds_snapshot:
-                    # Simple fallback: drop the first outbound and retry
-                    bad = self._outbounds_snapshot.pop(0)
-                    tag = str(bad.get("tag") or "?")
-                    await self._cleanup()
-                    await self._start_with_snapshot(secret)
-                    continue
-                else:
-                    await self._cleanup()
-                    raise RuntimeError(f"sing-box FATAL (retries exhausted): {stderr_text}")
-            else:
-                await self._cleanup()
-                raise RuntimeError(f"sing-box exited with code 1: {stderr_text}")
-        await self._cleanup()
-        raise RuntimeError("sing-box failed to start after retries")
-
-    async def _start_with_snapshot(self, secret: str) -> None:
-        outbound_tags = [str(o.get("tag")) for o in self._outbounds_snapshot if isinstance(o, dict) and o.get("tag")]
-        config_outbounds: list[dict] = [
-            {"type": "direct", "tag": "DIRECT"},
-            *self._outbounds_snapshot,
-        ]
-        final_outbound = "DIRECT"
-        if outbound_tags:
-            config_outbounds.append(
-                {
-                    "type": "selector",
-                    "tag": "PROXY",
-                    "outbounds": outbound_tags,
-                    "default": outbound_tags[0],
-                }
-            )
-            final_outbound = "PROXY"
-        config = {
-            "log": {"level": "warn"},
-            "inbounds": [
-                {
-                    "type": "mixed",
-                    "tag": "mixed-in",
-                    "listen": "127.0.0.1",
-                    "listen_port": 10809,
-                }
-            ],
-            "outbounds": config_outbounds,
-            "route": {"final": final_outbound},
-            "experimental": {
-                "clash_api": {
-                    "external_controller": f"{self._host}:{self._port}",
-                    "secret": secret,
-                    "access_control_allow_origin": "*",
-                }
-            },
-        }
-        tmpdir = tempfile.mkdtemp(prefix="sb-")
-        self._tmpdir = tmpdir
-        cfg_path = os.path.join(tmpdir, "config.json")
-        with open(cfg_path, "w", encoding="utf-8") as f:
-            json.dump(config, f)
-        self._proc = await asyncio.create_subprocess_exec(
-            self._singbox_path, "run", "-c", cfg_path,
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-        )
+    async def _wait_ready(self, secret: str) -> None:
+        headers = {"Authorization": f"Bearer {secret}"}
+        async with httpx.AsyncClient(timeout=2) as client:
+            for _ in range(40):
+                if self._proc is None:
+                    raise RuntimeError("sing-box exited early")
+                if self._proc.returncode is not None:
+                    stderr = b""
+                    try:
+                        if self._proc.stderr:
+                            stderr = await self._proc.stderr.read()
+                    except Exception:
+                        pass
+                    raise RuntimeError(
+                        f"sing-box exited with code {self._proc.returncode}: {stderr[:2000].decode(errors='ignore')}"
+                    )
+                try:
+                    r = await client.get(
+                        f"http://{self._host}:{self._port}/proxies",
+                        headers=headers,
+                    )
+                    if r.status_code == 200:
+                        return
+                except Exception:
+                    pass
+                await asyncio.sleep(0.25)
+        raise RuntimeError("sing-box clash api did not become ready")
 
     async def stop(self) -> None:
         if self._proc is None:
