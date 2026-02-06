@@ -63,6 +63,8 @@ class SingBoxRunner:
             if required_len is None:
                 return False
             s = (password or "").strip()
+            if ":" in s:
+                s = s.split(":", 1)[0]
             if not s:
                 return False
             missing = (-len(s)) % 4
