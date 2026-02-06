@@ -24,4 +24,5 @@ https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub
 https://sub.shadowproxy66.workers.dev/sub/be80a76c-6044-417c-9bff-e587f9380d05#ShadowProxy66(1)
 https://raw.githubusercontent.com/mehran1404/Sub_Link/refs/heads/main/V2RAY-Sub.txt
 https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray
-
+https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/refs/heads/main/all_configs.txt
+https://raw.githubusercontent.com/10ium/V2ray-Config/main/All_Configs_Sub.txt
