@@ -94,6 +94,25 @@ def _is_valid_ss2022_key(method: str, password: str) -> bool:
     return len(raw) == required_len
 
 
+def _sanitize_ss2022_password(method: str, password: str) -> str:
+    m = (method or "").strip().lower()
+    if not m.startswith("2022-"):
+        return password
+    s = (password or "").strip()
+    if ":" in s:
+        s = s.split(":", 1)[0]
+    if s:
+        allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-=")
+        cut = 0
+        for ch in s:
+            if ch in allowed:
+                cut += 1
+            else:
+                break
+        s = s[:cut]
+    return s
+
+
 def _is_probably_yaml(text: str) -> bool:
     t = text.lstrip()
     return t.startswith("proxies:") or ("\nproxies:" in t) or ("proxy-groups:" in t)
@@ -319,6 +338,7 @@ def node_from_share_link(link: str) -> Node:
         name = urllib.parse.unquote(u.fragment) if u.fragment else "ss"
         tag = _safe_tag(name)
         host, port, method, password = _parse_ss(link)
+        password = _sanitize_ss2022_password(method, password)
         if not _is_valid_ss2022_key(method, password):
             raise ValueError("Invalid shadowsocks 2022 key")
         outbound: dict = {
@@ -410,7 +430,7 @@ def node_from_clash_proxy(proxy: dict) -> Node | None:
         server = proxy.get("server")
         port = int(proxy.get("port"))
         method = _normalize_ss_method(str(proxy.get("cipher") or proxy.get("method") or ""))
-        password = str(proxy.get("password") or "")
+        password = _sanitize_ss2022_password(method, str(proxy.get("password") or ""))
         if not _is_valid_ss2022_key(method, password):
             return None
         outbound = {
