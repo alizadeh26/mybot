@@ -68,6 +68,8 @@ def _is_valid_ss2022_key(method: str, password: str) -> bool:
         return False
 
     s = (password or "").strip()
+    if ":" in s:
+        s = s.split(":", 1)[0]
     if not s:
         return False
     missing = (-len(s)) % 4
