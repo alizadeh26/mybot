@@ -7,6 +7,7 @@ import secrets
 import shutil
 import tempfile
 import urllib.parse
+import base64
 from dataclasses import dataclass
 
 import httpx
@@ -50,11 +51,48 @@ class SingBoxRunner:
         secret = secrets.token_urlsafe(24)
         self._secret = secret
 
-        outbound_tags = [str(o.get("tag")) for o in outbounds if isinstance(o, dict) and o.get("tag")]
+        def _is_valid_ss2022_key(method: str, password: str) -> bool:
+            m = (method or "").strip().lower()
+            if not m.startswith("2022-"):
+                return True
+            required_len: int | None = None
+            if "aes-128-gcm" in m:
+                required_len = 16
+            elif "aes-256-gcm" in m or "chacha20" in m:
+                required_len = 32
+            if required_len is None:
+                return False
+            s = (password or "").strip()
+            if not s:
+                return False
+            missing = (-len(s)) % 4
+            if missing:
+                s += "=" * missing
+            try:
+                raw = base64.b64decode(s.encode(), validate=True)
+            except Exception:
+                try:
+                    raw = base64.urlsafe_b64decode(s.encode())
+                except Exception:
+                    return False
+            return len(raw) == required_len
+
+        filtered_outbounds: list[dict] = []
+        for o in outbounds:
+            if not isinstance(o, dict) or not o.get("tag"):
+                continue
+            if str(o.get("type") or "").lower() == "shadowsocks":
+                method = str(o.get("method") or "")
+                password = str(o.get("password") or "")
+                if not _is_valid_ss2022_key(method, password):
+                    continue
+            filtered_outbounds.append(o)
+
+        outbound_tags = [str(o.get("tag")) for o in filtered_outbounds if isinstance(o, dict) and o.get("tag")]
 
         config_outbounds: list[dict] = [
             {"type": "direct", "tag": "DIRECT"},
-            *outbounds,
+            *filtered_outbounds,
         ]
         final_outbound = "DIRECT"
 
