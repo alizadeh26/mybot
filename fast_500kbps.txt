@@ -1,5 +1,5 @@
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.116:8880?encryption=none&type=grpc#Server 32 🇺🇸	dl_kib_s=2719	ul_kib_s=1772
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?security=none&allowInsecure=0&encryption=none&type=grpc#Server 31 🇺🇸	dl_kib_s=2725	ul_kib_s=1652
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?mode=gun&security=&encryption=none&authority=telegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray&type=grpc#Server 35 🇺🇸	dl_kib_s=2364	ul_kib_s=1656
-vless://5ce84688-f535-46ad-a512-37b17becf6ea@152.228.162.19:80?encryption=none&security=none&type=ws&host=akamaized.net&path=/vless/#Server 26 🇫🇷	dl_kib_s=1154	ul_kib_s=946
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkOThjOWE2Mzk5MDY0MjI3@157.185.130.3:49336?#Server 11 🇮🇹	dl_kib_s=1046	ul_kib_s=925
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?mode=gun&security=none&encryption=none&type=grpc#Server 39 🇺🇸	dl_kib_s=2424	ul_kib_s=1861
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=none&encryption=none&type=grpc#Server 34 🇺🇸	dl_kib_s=2619	ul_kib_s=1549
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?security=none&allowInsecure=0&encryption=none&type=grpc#Server 31 🇺🇸	dl_kib_s=607	ul_kib_s=1553
+vless://5ce84688-f535-46ad-a512-37b17becf6ea@152.228.162.19:80?encryption=none&security=none&type=ws&host=akamaized.net&path=/vless/#Server 26 🇫🇷	dl_kib_s=1108	ul_kib_s=879
+vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.116:8880?mode=gun&security=none&encryption=none&type=grpc#Server 37 🇺🇸	dl_kib_s=675	ul_kib_s=1286
