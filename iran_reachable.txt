@@ -1,2 +1,1 @@
-vless://rootface-hacker@38.244.26.120:80?path=//𒉭𓆩@rootface𒆜𒉭 @pwn_1337 TELEGRAM&security=none&encryption=none&type=ws#Server 122 🇺🇸
-vless://094e66a9-8d92-41fe-85ad-8e7bf9b5fcaa@nl-78w-c.southnetworks.cloud:80?encryption=none&security=none&type=ws&host=nl-78w-c.southnetworks.cloud&path=/getWorkerUpdates#Server 21 🇷🇺
+
