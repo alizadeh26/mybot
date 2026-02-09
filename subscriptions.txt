@@ -57,4 +57,18 @@ https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt
 
 ttps://cdn.jsdelivr.net/gh/peasoft/NoMoreWalls@master/list.txt
 https://subconverter-rs.netlify.app/api/s/YrwNJ1#ShadowProxy66
-
+https://robin.victoriacross.ir
+https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all
+https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt
+https://raw.githubusercontent.com/Mosifree/-FREE2CONFIG/refs/heads/main/Clash_Movaghat
+https://raw.githubusercontent.com/arshiacomplus/v2rayExtractor/refs/heads/main/mix/sub.html
+https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha.txt
+https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_3.txt
+https://raw.githubusercontent.com/mshojaei77/v2rayAuto/refs/heads/main/subs/hy2
+https://igdux.top/~49-@ShadowProxy66
+https://raw.githubusercontent.com/eliv2-ray/ELENA-config/refs/heads/main/Shadow-ELiV2ray
+https://github.com/aiboboxx/v2rayfree/blob/main
+https://proxypool.link/clash/proxies
+https://gh-proxy.com/raw.githubusercontent.com/Ruk1ng001/freeSub/main/v2ray
+https://raw.githubusercontent.com/MrMohebi/xray-proxy-grabber-telegram/master/collected-proxies/row-url/all.txt
+https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/wenode.txt
