@@ -55,6 +55,6 @@ https://raw.githubusercontent.com/iboxz/free-v2ray-collector/main/main/mix.txt
 https://raw.githubusercontent.com/hans-thomas/v2ray-subscription/refs/heads/master/servers.txt
 https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt
 
-
-https://raw.githubusercontent.com/DiDiten/HiN-VPN/refs/heads/main/subscription/hiddify/mix
+ttps://cdn.jsdelivr.net/gh/peasoft/NoMoreWalls@master/list.txt
+https://subconverter-rs.netlify.app/api/s/YrwNJ1#ShadowProxy66
 
