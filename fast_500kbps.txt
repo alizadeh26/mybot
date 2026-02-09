@@ -1,6 +1,9 @@
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?mode=gun&security=none&encryption=none&type=grpc#Server 34 🇺🇸	dl_kib_s=11440	ul_kib_s=9347
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@yesok42v2.ip4exordir.shop:8880?mode=gun&security=&encryption=none&authority=telegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray%2Ctelegram-%40mainv2ray&type=grpc#Server 35 🇺🇸	dl_kib_s=8813	ul_kib_s=9587
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.208:8880?security=none&allowInsecure=0&encryption=none&type=grpc#Server 31 🇺🇸	dl_kib_s=9445	ul_kib_s=6674
-vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3@45.82.251.116:8880?encryption=none&type=grpc#Server 32 🇺🇸	dl_kib_s=9126	ul_kib_s=4159
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08@57.129.140.88:8388#Server 7 🇬🇧	dl_kib_s=2182	ul_kib_s=1757
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkOThjOWE2Mzk5MDY0MjI3@157.185.130.3:49336?#Server 11 🇮🇹	dl_kib_s=1449	ul_kib_s=1189
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@141.98.101.182:443#Server 15 🇬🇧	dl_kib_s=1774	ul_kib_s=1322
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08=@57.129.140.88:8388#Server 5 🇬🇧	dl_kib_s=1681	ul_kib_s=1299
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.101:8080#Server 12 🇳🇱	dl_kib_s=1634	ul_kib_s=1202
+vless://5fa2319e-44a0-4497-8005-110969e98dd1@5.75.205.170:10321?security=none&encryption=none&headerType=none&type=tcp#Server 2 🇩🇪	dl_kib_s=1628	ul_kib_s=1201
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.61:8080#Server 9 🇳🇱	dl_kib_s=1563	ul_kib_s=1173
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.89:8080?type=tcp#Server 3 🇳🇱	dl_kib_s=1567	ul_kib_s=1160
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.210:8080#Server 13 🇳🇱	dl_kib_s=1559	ul_kib_s=1154
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.122:8080#Server 6 🇳🇱	dl_kib_s=1548	ul_kib_s=1145
+vless://4f7bec62-b1e7-43d6-b1d4-9eb404596990@5.75.205.170:443?security=none&encryption=none&headerType=none&type=tcp#Server 10 🇩🇪	dl_kib_s=1526	ul_kib_s=1126
