@@ -1,2 +1,4 @@
-vless://31701b5d-ca95-92f9-d684-dae3706161ea@dd.openaccessnode.com:50/?type=tcp&encryption=none&flow=#Server 18 🇸🇪	dl_kib_s=1518	ul_kib_s=977
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5NGFhZTA1MTAxODhlOGM1@141.95.106.127:11201#Server 33 🇩🇪	dl_kib_s=1428	ul_kib_s=1040
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08@57.129.140.88:8388#Server 8 🇬🇧	dl_kib_s=1284	ul_kib_s=974
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08=@57.129.140.88:8388#Server 5 🇬🇧	dl_kib_s=1274	ul_kib_s=981
+vless://31701b5d-ca95-92f9-d684-dae3706161ea@dd.openaccessnode.com:50/?type=tcp&encryption=none&flow=#Server 18 🇸🇪	dl_kib_s=1235	ul_kib_s=707
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.210:8080#Server 13 🇳🇱	dl_kib_s=692	ul_kib_s=872
