@@ -73,4 +73,5 @@ https://github.com/aiboboxx/v2rayfree/blob/main
 https://proxypool.link/clash/proxies
 https://gh-proxy.com/raw.githubusercontent.com/Ruk1ng001/freeSub/main/v2ray
 https://raw.githubusercontent.com/MrMohebi/xray-proxy-grabber-telegram/master/collected-proxies/row-url/all.txt
-https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/wenode.txt
+
+https://raw.githubusercontent.com/DiDiten/HiN-VPN/main/subscription/hiddify/mix#MIX%20%7C%20BiB
