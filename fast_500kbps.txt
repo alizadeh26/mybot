@@ -1,2 +1,2 @@
-vless://31701b5d-ca95-92f9-d684-dae3706161ea@dd.openaccessnode.com:50/?type=tcp&encryption=none&flow=#Server 18 🇸🇪	dl_kib_s=1231	ul_kib_s=792
-vless://6202b230-417c-4d8e-b624-0f71afa9c75d@146.190.207.55:443?type=ws&security=tls&host=sni.111000.indevs.in&path=/?ed%3D2560%26Telegram@VPN_VIP_NOR&sni=sni.111000.indevs.in&alpn=h2,http/1.1#Server 37 🇩🇪	dl_kib_s=685	ul_kib_s=705
+vless://31701b5d-ca95-92f9-d684-dae3706161ea@dd.openaccessnode.com:50/?type=tcp&encryption=none&flow=#Server 18 🇸🇪	dl_kib_s=1518	ul_kib_s=977
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo5NGFhZTA1MTAxODhlOGM1@141.95.106.127:11201#Server 33 🇩🇪	dl_kib_s=1428	ul_kib_s=1040
