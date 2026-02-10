@@ -1,2 +1,2 @@
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206ZXRVOC9mdkNWUGFxbUtrWFY2Ylg4djhVTEk0RmNoK0VLdmcxOU1vRVRMaz0=@57.131.41.129:8390#Server 7 🇫🇷	dl_kib_s=1356	ul_kib_s=1057
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206ZXRVOC9mdkNWUGFxbUtrWFY2Ylg4djhVTEk0RmNoK0VLdmcxOU1vRVRMaz0@57.131.41.129:8390#Server 1 🇫🇷	dl_kib_s=1367	ul_kib_s=934
+vless://e765eb5b-8442-40e3-9532-857ba5ececa7@ipbaz.ping-box.com:443?encryption=none&security=tls&sni=vbox.ping-box.com&insecure=0&allowInsecure=0&type=grpc#Server 34 🇨🇦	dl_kib_s=1472	ul_kib_s=1042
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.89:8080?type=tcp#Server 3 🇳🇱	dl_kib_s=757	ul_kib_s=725
