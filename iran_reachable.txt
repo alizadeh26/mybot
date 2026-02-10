@@ -1,6 +1,1 @@
-vmess://eyJ2IjoiMiIsInBzIjoiU2VydmVyIDQzIPCfh6jwn4emIiwiYWRkIjoiMTcyLjY0LjE0OS4xODIiLCJwb3J0IjoiODA4MCIsImlkIjoibmFzbmV0IiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ3cyIsInR5cGUiOiItLS0iLCJob3N0IjoibmFzbmV0LTU3MTI5NjQxMDIuc2hhcmdoZGFpbHkuY28iLCJwYXRoIjoiL25hc25ldC9jZG4iLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiJVU+e+juWbvSJ9
-vless://e6c7ed63-89db-4ae1-a3f8-7a722921b3b2@104.18.32.47:443?alpn=http%2F1.1&encryption=none&host=apii.onlineshoppingez.ir&fp=chrome&path=%2FO1w0n3vYgFKYs7EzNAvLPvOp&security=tls&sni=apii.onlineshoppingez.ir&type=ws#Server 41 🇨🇦
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpjYzI3YTMwMTJkODFhNDRj@213.156.137.142:43660#Server 83 🇰🇿
-vless://e6c7ed63-89db-4ae1-a3f8-7a722921b3b2@chatgpt.com:443?path=/O1w0n3vYgFKYs7EzNAvLPvOp&security=tls&alpn=http/1.1&encryption=none&insecure=1&host=apii.onlineshoppingez.ir&fp=chrome&type=ws&allowInsecure=1&sni=apii.onlineshoppingez.ir#Server 86 🇨🇦
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpjYzI3YTMwMTJkODFhNDRj@213.156.137.142:43662#Server 101 🇰🇿
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpjYzI3YTMwMTJkODFhNDRj@213.156.137.142:43661#Server 103 🇰🇿
+
