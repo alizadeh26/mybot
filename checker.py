@@ -2,115 +2,142 @@ from __future__ import annotations
 
 import asyncio
 from dataclasses import dataclass
-from datetime import datetime, timezone
 
-import yaml
-
-from singbox_runner import SingBoxRunner
-from subs import Node, fetch_text, node_from_clash_proxy, node_from_share_link, parse_subscription_payload
+import httpx
 
 
 @dataclass(frozen=True)
-class CheckResult:
-    healthy_links: list[str]
-    healthy_clash_proxies: list[dict]
+class CheckHostNode:
+    name: str
+    country_code: str
+    country: str
+    city: str
 
 
-async def collect_nodes(urls: list[str]) -> list[Node]:
-    nodes: list[Node] = []
-    seen_tags: set[str] = set()
+@dataclass(frozen=True)
+class Endpoint:
+    host: str
+    port: int
+    line: str
 
-    for url in urls:
-        try:
-            text = await fetch_text(url)
-        except Exception:
+    @property
+    def hostport(self) -> str:
+        return f"{self.host}:{self.port}"
+
+
+async def get_nodes(country_code: str) -> list[CheckHostNode]:
+    headers = {"Accept": "application/json"}
+    async with httpx.AsyncClient(timeout=30) as client:
+        r = await client.get("https://check-host.net/nodes/hosts", headers=headers)
+        r.raise_for_status()
+        data = r.json()
+
+    nodes = data.get("nodes") if isinstance(data, dict) else None
+    if not isinstance(nodes, dict):
+        return []
+
+    out: list[CheckHostNode] = []
+    for name, info in nodes.items():
+        if not isinstance(info, dict):
             continue
+        loc = info.get("location")
+        if not isinstance(loc, list) or len(loc) < 3:
+            continue
+        cc = str(loc[0]).lower()
+        if cc != country_code.lower():
+            continue
+        out.append(CheckHostNode(name=name, country_code=cc, country=str(loc[1]), city=str(loc[2])))
 
-        links, proxies = parse_subscription_payload(text)
+    return out
 
-        for link in links:
+
+async def _start_tcp_check(endpoint: Endpoint, node_names: list[str]) -> str | None:
+    headers = {"Accept": "application/json"}
+    params: list[tuple[str, str]] = [("host", endpoint.hostport)]
+    for n in node_names:
+        params.append(("node", n))
+
+    async with httpx.AsyncClient(timeout=30) as client:
+        r = await client.get("https://check-host.net/check-tcp", headers=headers, params=params)
+        if r.status_code != 200:
+            return None
+        data = r.json()
+
+    if not isinstance(data, dict) or data.get("ok") != 1:
+        return None
+    rid = data.get("request_id")
+    return str(rid) if rid else None
+
+
+def _is_success(item: object) -> bool:
+    return isinstance(item, dict) and ("time" in item) and ("error" not in item)
+
+
+async def _poll_result(request_id: str, node_names: list[str], max_wait_seconds: int) -> bool:
+    headers = {"Accept": "application/json"}
+    deadline = asyncio.get_event_loop().time() + max_wait_seconds
+
+    async with httpx.AsyncClient(timeout=30) as client:
+        while asyncio.get_event_loop().time() < deadline:
+            r = await client.get(f"https://check-host.net/check-result/{request_id}", headers=headers)
+            if r.status_code != 200:
+                await asyncio.sleep(0.5)
+                continue
+
+            data = r.json()
+            if not isinstance(data, dict):
+                await asyncio.sleep(0.5)
+                continue
+
+            any_success = False
+            all_done = True
+            for node in node_names:
+                node_res = data.get(node)
+                if node_res is None:
+                    all_done = False
+                    continue
+                if isinstance(node_res, list) and any(_is_success(it) for it in node_res):
+                    any_success = True
+                    break
+
+            if any_success:
+                return True
+            if all_done:
+                return False
+
+            await asyncio.sleep(0.5)
+
+    return False
+
+
+async def reachable_from_country_tcp(
+    endpoints: list[Endpoint],
+    country_code: str = "ir",
+    max_endpoints: int = 50,
+    concurrency: int = 5,
+    poll_wait_seconds: int = 15,
+) -> list[Endpoint]:
+    nodes = await get_nodes(country_code)
+    node_names = [n.name for n in nodes]
+    if not node_names:
+        return []
+
+    endpoints = endpoints[: max(0, int(max_endpoints))]
+
+    sem = asyncio.Semaphore(max(1, int(concurrency)))
+    ok: list[Endpoint] = []
+
+    async def one(ep: Endpoint) -> None:
+        async with sem:
+            rid = await _start_tcp_check(ep, node_names)
+            if not rid:
+                return
             try:
-                n = node_from_share_link(link)
+                success = await _poll_result(rid, node_names, poll_wait_seconds)
             except Exception:
-                continue
-            if n.tag in seen_tags:
-                continue
-            seen_tags.add(n.tag)
-            nodes.append(n)
+                return
+            if success:
+                ok.append(ep)
 
-        for p in proxies:
-            n = node_from_clash_proxy(p)
-            if not n:
-                continue
-            if n.tag in seen_tags:
-                continue
-            seen_tags.add(n.tag)
-            nodes.append(n)
-
-    return nodes
-
-
-async def check_nodes(
-    singbox_path: str,
-    clash_api_host: str,
-    clash_api_port: int,
-    test_url: str,
-    timeout_ms: int,
-    max_concurrency: int,
-    nodes: list[Node],
-) -> CheckResult:
-    outbounds = [n.outbound for n in nodes]
-    sem = asyncio.Semaphore(max_concurrency)
-
-    healthy_links: list[str] = []
-    healthy_clash: list[dict] = []
-
-    async with SingBoxRunner(singbox_path, clash_api_host, clash_api_port) as runner:
-        api = await runner.start(outbounds)
-
-        async def one(n: Node) -> None:
-            async with sem:
-                try:
-                    d = await runner.delay_test(api, n.tag, test_url, timeout_ms)
-                except Exception:
-                    return
-                if d is None:
-                    return
-                if n.export_link:
-                    healthy_links.append(n.export_link)
-                if n.export_clash_proxy:
-                    healthy_clash.append(n.export_clash_proxy)
-
-        await asyncio.gather(*(one(n) for n in nodes))
-
-    return CheckResult(healthy_links=healthy_links, healthy_clash_proxies=healthy_clash)
-
-
-def render_outputs(res: CheckResult) -> tuple[bytes, bytes]:
-    txt = "\n".join(res.healthy_links).strip() + "\n"
-
-    yaml_obj = {
-        "port": 7890,
-        "socks-port": 7891,
-        "allow-lan": True,
-        "mode": "Rule",
-        "log-level": "silent",
-        "proxies": res.healthy_clash_proxies,
-        "proxy-groups": [
-            {
-                "name": "AUTO",
-                "type": "url-test",
-                "url": "https://cp.cloudflare.com/generate_204",
-                "interval": 300,
-                "proxies": [p.get("name") for p in res.healthy_clash_proxies if isinstance(p, dict) and p.get("name")],
-            }
-        ],
-        "rules": ["MATCH,AUTO"],
-    }
-    yml = yaml.safe_dump(yaml_obj, allow_unicode=True, sort_keys=False).encode("utf-8")
-    return txt.encode("utf-8"), yml
-
-
-def build_commit_message(prefix: str) -> str:
-    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
-    return f"{prefix} {ts}"
+    await asyncio.gather(*(one(ep) for ep in endpoints))
+    return ok
