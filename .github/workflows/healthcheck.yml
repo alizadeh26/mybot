@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -51,7 +51,7 @@ jobs:
           SUBSCRIPTIONS_FILE: "subscriptions.txt"
           CLASH_API_HOST: "127.0.0.1"
           CLASH_API_PORT: "9090"
-          REFRESH_HOURS: "4"
+          REFRESH_HOURS: "2"
           TEST_URL: "https://cp.cloudflare.com/generate_204"
           TEST_TIMEOUT_MS: "6000"
           MAX_CONCURRENCY: "20"
