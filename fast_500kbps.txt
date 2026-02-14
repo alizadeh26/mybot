@@ -1,2 +1,1 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTozN2VmNGYwMjlmMWFjMGFj@141.95.105.28:11201#Server 32 🇩🇪	dl_kib_s=1142	ul_kib_s=1349
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@141.98.101.182:443#Server 15 🇬🇧	dl_kib_s=685	ul_kib_s=1524
+
