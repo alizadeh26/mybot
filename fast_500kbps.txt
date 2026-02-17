@@ -1,6 +1,4 @@
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08=@57.129.140.88:8388#Server 5 🇬🇧	dl_kib_s=1316	ul_kib_s=991
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@141.98.101.182:443#Server 15 🇬🇧	dl_kib_s=1229	ul_kib_s=939
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08@57.129.140.88:8388#Server 8 🇬🇧	dl_kib_s=1324	ul_kib_s=799
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.89:8080?type=tcp#Server 3 🇳🇱	dl_kib_s=933	ul_kib_s=815
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.210:8080#Server 13 🇳🇱	dl_kib_s=651	ul_kib_s=841
-vless://f74d98a4-9198-4f78-b921-47d4f4950953@185.236.26.58:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=de3.teleport.lat&fp=chrome&insecure=0&allowInsecure=0&type=tcp&headerType=none#Server 24 🇩🇪	dl_kib_s=551	ul_kib_s=519
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08=@57.129.140.88:8388#Server 5 🇬🇧	dl_kib_s=1358	ul_kib_s=1027
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMXY1ZzlGZWZkb08@57.129.140.88:8388#Server 8 🇬🇧	dl_kib_s=1322	ul_kib_s=1037
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.89:8080?type=tcp#Server 3 🇳🇱	dl_kib_s=1050	ul_kib_s=829
+vless://f74d98a4-9198-4f78-b921-47d4f4950953@185.236.26.58:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=de3.teleport.lat&fp=chrome&insecure=0&allowInsecure=0&type=tcp&headerType=none#Server 24 🇩🇪	dl_kib_s=885	ul_kib_s=729
